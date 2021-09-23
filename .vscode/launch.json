@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "Debug Node App.js",
       "skipFiles": ["<node_internals>/**"],
-      "program": "${workspaceFolder}/05-JWT-Basics/starter/app.js"
+      "program": "${workspaceFolder}/06-jobs-api/starter/app.js"
     },
 
     {

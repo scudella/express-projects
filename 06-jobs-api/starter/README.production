@@ -1,0 +1,6 @@
+The only thing required to modify in  order to push to horoku is to 
+modify package.json. Replace nodemon with node and add engines to the
+end of the file.
+
+After git push it requires to enter the env parameters in horoku site,
+as this file is not pushed.
