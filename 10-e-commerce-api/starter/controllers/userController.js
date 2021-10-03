@@ -5,7 +5,11 @@ const {
   NotFoundError,
   UnauthenticatedError,
 } = require('../errors');
-const { attachCookiesToResponse, checkPermissions } = require('../utils');
+const {
+  attachCookiesToResponse,
+  checkPermissions,
+  createTokenUser,
+} = require('../utils');
 
 // get all users
 
@@ -47,7 +51,7 @@ const updateUser = async (req, res) => {
 
   await user.save();
 
-  const tokenUser = { name: user.name, userId: user._id, role: user.role };
+  const tokenUser = createTokenUser(user);
   attachCookiesToResponse({ res, user: tokenUser });
   res.status(StatusCodes.OK).json({ user: tokenUser });
 };
