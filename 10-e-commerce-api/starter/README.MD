@@ -2,10 +2,6 @@
 
 [E-Commerce API Heroku URL](https://e-commerce-api-10.herokuapp.com/)
 
-## Docgen Command
-
-docgen build -i fileName.json -o index.html
-
 #### Setup Basic Express Server
 
 - [] import express and assign to variable
@@ -290,7 +286,7 @@ docgen build -i fileName.json -o index.html
 
 #### Order Schema
 
-- [] create Review.js in models folder
+- [] create Order.js in models folder
 - [] create Schema
 - [] tax : {type:Number}
 - [] shippingFee: {type:Number}
@@ -302,12 +298,12 @@ docgen build -i fileName.json -o index.html
 - [] clientSecret:{type:String}
 - [] paymentId:{type:String}
 - [] set timestamps
-- [] export Review model
+- [] export Order model
 
 #### Order Structure
 
 - [] add orderController file in controllers
-- [] export (getAllOrders, getOrder, getSingleUserOrders,
+- [] export (getAllOrders, getSingleOrder, getCurrentUserOrders,
   createOrder, updateOrder) functions
 - [] res.send('function name')
 - [] setup orderRoutes file in routes
@@ -315,9 +311,11 @@ docgen build -i fileName.json -o index.html
 - [] authenticate user in all routes
 - [] getAllOrders admin only
 - [] typical REST setup
-- [] router.route('/showAllMyOrders').get(getSingleUserOrders)
+- [] router.route('/showAllMyOrders').get(getCurrentUserOrders)
 - [] import orderRoutes as orderRouter in the app.js
 - [] setup app.use('/api/v1/orders', orderRouter)
+
+#### Order in Postman
 
 #### Create Order
 
@@ -325,27 +323,54 @@ docgen build -i fileName.json -o index.html
 
 #### Get All Orders and Get Single Order
 
-- [] check permissions in single order
+- [] getAllOrders - admin only
+- [] getSingleOrder - chechPermissions
 
-#### Get Single User Orders
+#### Get Current User Orders
 
 - [] find orders where user is equal to req.user.userId
 
 #### Update Order
 
 - [] get order id
-- [] get paymentIntentID (req.body)
+- [] get paymentIntentId (req.body)
 - [] get order
 - [] if does not exist - 404
 - [] check permissions
-- [] set paymentIntentID and status as 'paid'
+- [] set paymentIntentId and status as 'paid'
 - [] order.save()
 
 #### Create Docs
 
+- [] [Docgen Library] (https://github.com/thedevsaddam/docgen)
+- [] Export Postman Collection
 - [] docgen build -i fileName.json -o index.html
 - [] create index.html in public
 
 #### Security Packages
 
+- [] express-rate-limiter
+- [] helmet
+- [] xss-clean
+- [] express-mongo-sanitize
+- [] cors (cookies!!!!)
+
 #### Deploy on Heroku
+
+- [] heroku account and heroku cli
+- [] remove from the main repo
+- [] add dev command "nodemon app.js"
+- [] change start to "node app.js"
+- [] setup node version in package.json
+- [] "engines": {"node": "14.x"}
+- [] Procfile "web: node app.js"
+- [] remove existing git repo
+- [] rm -rf .git - mac,
+- [] git init
+- [] git add .
+- [] git commit -m "initial commit"
+- [] heroku login
+- [] heroku create "App Name"
+- [] git remote -v
+- [] setup env vars in GUI
+- [] git push heroku master/main
